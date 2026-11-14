@@ -41,11 +41,11 @@ If the Action fails, the previous `rates.json` stays in place, so the site keeps
 Every currency is shown with its **symbol/icon, its 3-letter code, and a hover tooltip with the full name** (see PRACTICE.md). On the rate tiles, the **flag and country name appear below the icon/code**. Flags are stored as local SVG files in `flags/`. Because CNY and JPY share "¥", the code always appears next to the icon.
 
 ## 5. Screen layout (top to bottom)
-1. **Header:** title ("NIS Currency Converter") and a short one-line subtitle.
+1. **Header:** title ("₪ NIS Currency Converter") and a short one-line subtitle. The page says "NIS" (with the ₪ symbol) instead of "shekels" everywhere.
 2. **"What can you do here?" panel:** a short, plain-language explanation:
    - Why the page exists (what a foreign price costs in NIS).
    - What the user can do: convert any amount, go both ways with ⇄, check today's rates on the tiles, and click a tile to use it.
-   - **Live data note:** states that the rates are live online data collected by the **Apify "Exchange Rates" service** and refreshed automatically every few hours, and that nothing is typed in by hand or taken from a spreadsheet. The source is named (not shown as a URL).
+   - **Live data note:** states that the rates are live online data collected by the **Apify "Exchange Rates" service** and refreshed automatically every few hours. The source is named (not shown as a URL).
 3. **Converter (main focus):**
    - Amount input field.
    - Currency selector (the 10 currencies above).
