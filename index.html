@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NIS Currency Converter</title>
+  <meta name="description" content="See how many NIS a foreign price is worth, and convert in both directions.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <h1>NIS Currency Converter</h1>
+    <p>How many shekels is it? Check a price in seconds.</p>
+  </header>
+
+  <main class="container">
+    <div id="error-panel" class="panel message" hidden>
+      <p>We can't load the exchange rates right now. Please try again in a few minutes.</p>
+      <button type="button" id="retry" class="btn">Try again</button>
+    </div>
+
+    <div id="stale-notice" class="notice" role="status" hidden></div>
+
+    <section id="converter" class="panel" aria-labelledby="conv-title" hidden>
+      <h2 id="conv-title">Convert</h2>
+
+      <label class="field-label" for="currency">Foreign currency</label>
+      <select id="currency"></select>
+
+      <div class="convert-row">
+        <div class="side">
+          <label class="field-label" for="amount">Amount</label>
+          <div class="amount-box">
+            <input id="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="0.00" aria-describedby="amount-error" value="100">
+            <span id="from-badge"></span>
+          </div>
+        </div>
+
+        <button type="button" id="swap" class="swap" aria-label="Swap direction" title="Swap direction">&#8644;</button>
+
+        <div class="side">
+          <span class="field-label">Result</span>
+          <div class="result-box">
+            <output id="result" aria-live="polite">—</output>
+            <span id="to-badge"></span>
+          </div>
+        </div>
+      </div>
+
+      <p id="amount-error" class="error" role="alert" hidden></p>
+      <p id="summary" class="summary"></p>
+    </section>
+
+    <section id="rates" aria-labelledby="rates-title" hidden>
+      <h2 id="rates-title">Today's rates</h2>
+      <div id="cards" class="cards"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p id="updated"></p>
+    <p>Rates are for information only and may differ slightly from bank or card rates.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
