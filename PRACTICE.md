@@ -4,13 +4,14 @@
 - The dashboard language is **English** (all labels, buttons, errors, tooltips, page `lang="en"`).
 
 ## Color palette
-- **Main colors:** light green and bottle green.
-- **Supporting colors:** gray or turquoise.
-- Suggested tokens (adjust if needed, but keep the palette):
-  - Light green: `#DFF2E1`
-  - Bottle green: `#0B3D2E`
-  - Gray: `#6B7280` / light gray background `#F3F4F6`
-  - Turquoise accent: `#14B8A6`
+- **Main colors:** light, soft greens.
+- **Supporting colors:** gray and turquoise.
+- **Do not use dark green** (including bottle green) for backgrounds, headers, buttons or icons. Keep the look light and friendly.
+- Text uses a soft gray-green or gray (not black, not dark green).
+- Current tokens:
+  - Light green: `#CFEED3`, very light green `#EFF9F0`, mid green `#8FD19E` (header gradient)
+  - Text: `#2F4F4A` and gray `#5B6470`, with light gray background `#F3F4F6`
+  - Turquoise accent: `#0E8F83` (buttons, currency icons)
 - Errors may use red and out-of-date notices may use yellow, because these are functional colors.
 - Text must keep good contrast with its background (WCAG AA).
 
@@ -18,12 +19,14 @@
 - Every currency is shown with **three things**: its **icon/symbol** (like `$`), its **3-letter code** (like `USD`), and the **real name on mouse hover** as a tooltip (like "United States Dollar").
 - The tooltip must also work for keyboard focus and touch (e.g. `title` plus `aria-label`).
 - This applies everywhere a currency appears: rate cards, selector and result.
+- Each rate tile also shows the **country flag and the country name below the currency icon/code**. Flags are local SVG files in `flags/` (emoji flags do not show on Windows).
 
 ## UX rules
 - Simple and user friendly, for ordinary people. No finance jargon, and no data that doesn't help the user convert an amount.
 - Amount input: decimals allowed, max 2 digits after the point, no text. Show a clear error message for invalid input (see SPEC section 6).
 - Technical errors never reach the user as technical text (see SPEC section 8).
 - Mobile-first, responsive layout. No horizontal scrolling.
+- The page explains in plain words what it can do, and says clearly that the rates are live online data, naming the source (not a link).
 
 ## Code & repo rules
 - Static site only (HTML/CSS/JS), deployable to GitHub Pages.
@@ -58,8 +61,10 @@
 
 **Design**
 - [ ] The page is in English only.
-- [ ] The palette is light green and bottle green with gray or turquoise.
+- [ ] The palette is light greens with gray or turquoise, and **no dark green anywhere**.
 - [ ] Every currency shows icon + code, and the full name on hover (and on keyboard focus).
+- [ ] Every rate tile shows the country flag and country name below the currency icon/code.
+- [ ] The "What can you do here?" explanation and the live-data source note are visible.
 - [ ] The screen is simple, with no unnecessary data.
 - [ ] Looks good on mobile (~375px), tablet and desktop, with no horizontal scroll.
 - [ ] Text contrast is readable.
