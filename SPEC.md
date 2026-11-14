@@ -25,32 +25,36 @@ A token placed in page code would be public, so the browser **never calls Apify 
 If the Action fails, the previous `rates.json` stays in place, so the site keeps working with the last known rates (see section 8).
 
 ## 4. Currencies shown (10)
-| Icon | Code | Name (shown on hover) |
-|---|---|---|
-| $ | USD | United States Dollar |
-| € | EUR | Euro |
-| £ | GBP | British Pound Sterling |
-| C$ | CAD | Canadian Dollar |
-| ¥ | CNY | Chinese Yuan (Renminbi) |
-| ¥ | JPY | Japanese Yen |
-| ฿ | THB | Thai Baht |
-| Fr | CHF | Swiss Franc |
-| A$ | AUD | Australian Dollar |
-| ₺ | TRY | Turkish Lira |
+| Icon | Code | Name (shown on hover) | Country (flag + name on the tile) |
+|---|---|---|---|
+| $ | USD | United States Dollar | United States |
+| € | EUR | Euro | Eurozone (EU flag) |
+| £ | GBP | British Pound Sterling | United Kingdom |
+| C$ | CAD | Canadian Dollar | Canada |
+| ¥ | CNY | Chinese Yuan (Renminbi) | China |
+| ¥ | JPY | Japanese Yen | Japan |
+| ฿ | THB | Thai Baht | Thailand |
+| Fr | CHF | Swiss Franc | Switzerland |
+| A$ | AUD | Australian Dollar | Australia |
+| ₺ | TRY | Turkish Lira | Turkey |
 
-Every currency is shown with its **symbol/icon, its 3-letter code, and a hover tooltip with the full name** (see PRACTICE.md). Because CNY and JPY share "¥", the code always appears next to the icon.
+Every currency is shown with its **symbol/icon, its 3-letter code, and a hover tooltip with the full name** (see PRACTICE.md). On the rate tiles, the **flag and country name appear below the icon/code**. Flags are stored as local SVG files in `flags/`. Because CNY and JPY share "¥", the code always appears next to the icon.
 
 ## 5. Screen layout (top to bottom)
-1. **Header:** title ("NIS Currency Converter") and a short one-line subtitle.
-2. **Converter (main focus):**
+1. **Header:** title ("₪ NIS Currency Converter") and a short one-line subtitle. The page says "NIS" (with the ₪ symbol) instead of "shekels" everywhere.
+2. **"What can you do here?" panel:** a short, plain-language explanation:
+   - Why the page exists (what a foreign price costs in NIS).
+   - What the user can do: convert any amount, go both ways with ⇄, check today's rates on the tiles, and click a tile to use it.
+   - **Live data note:** states that the rates are live online data collected by the **Apify "Exchange Rates" service** and refreshed automatically every few hours. The source is named (not shown as a URL).
+3. **Converter (main focus):**
    - Amount input field.
    - Currency selector (the 10 currencies above).
    - **Direction:** NIS → foreign currency, or foreign currency → NIS.
    - **Swap button (⇄):** flips the direction with one click.
    - Result shown large and clear, e.g. `100.00 USD = 365.40 NIS`.
    - Result updates as the user types or changes the currency or direction.
-3. **Rate cards:** a grid with one card per currency, showing "1 [CODE] = X.XX NIS" with icon, code and hover name. Clicking a card selects that currency in the converter.
-4. **Footer:** "Last updated: <date and time>" and a short note that rates are for information only and may differ slightly from bank or card rates.
+4. **Rate cards:** a grid with one card per currency. Each card shows, from top to bottom: the currency icon + code (full name on hover), **the country flag and country name**, and "1 [CODE] = X.XX NIS" (4 decimals when the value is below 1, such as JPY or THB). Clicking a card selects that currency in the converter.
+5. **Footer:** "Last updated: <date and time>", "Source: Apify "Exchange Rates" – live online data", and a short note that rates are for information only and may differ slightly from bank or card rates.
 
 ### Not included (to keep it simple)
 Historical charts, trend indicators, currency pair tables, news, login, settings and ads.

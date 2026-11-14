@@ -2,16 +2,16 @@
   'use strict';
 
   var CURRENCIES = [
-    { code: 'USD', icon: '$',  name: 'United States Dollar' },
-    { code: 'EUR', icon: '€',  name: 'Euro' },
-    { code: 'GBP', icon: '£',  name: 'British Pound Sterling' },
-    { code: 'CAD', icon: 'C$', name: 'Canadian Dollar' },
-    { code: 'CNY', icon: '¥',  name: 'Chinese Yuan (Renminbi)' },
-    { code: 'JPY', icon: '¥',  name: 'Japanese Yen' },
-    { code: 'THB', icon: '฿',  name: 'Thai Baht' },
-    { code: 'CHF', icon: 'Fr', name: 'Swiss Franc' },
-    { code: 'AUD', icon: 'A$', name: 'Australian Dollar' },
-    { code: 'TRY', icon: '₺',  name: 'Turkish Lira' }
+    { code: 'USD', icon: '$',  name: 'United States Dollar', country: 'United States', flag: 'us' },
+    { code: 'EUR', icon: '€',  name: 'Euro', country: 'Eurozone', flag: 'eu' },
+    { code: 'GBP', icon: '£',  name: 'British Pound Sterling', country: 'United Kingdom', flag: 'gb' },
+    { code: 'CAD', icon: 'C$', name: 'Canadian Dollar', country: 'Canada', flag: 'ca' },
+    { code: 'CNY', icon: '¥',  name: 'Chinese Yuan (Renminbi)', country: 'China', flag: 'cn' },
+    { code: 'JPY', icon: '¥',  name: 'Japanese Yen', country: 'Japan', flag: 'jp' },
+    { code: 'THB', icon: '฿',  name: 'Thai Baht', country: 'Thailand', flag: 'th' },
+    { code: 'CHF', icon: 'Fr', name: 'Swiss Franc', country: 'Switzerland', flag: 'ch' },
+    { code: 'AUD', icon: 'A$', name: 'Australian Dollar', country: 'Australia', flag: 'au' },
+    { code: 'TRY', icon: '₺',  name: 'Turkish Lira', country: 'Turkey', flag: 'tr' }
   ];
   var NIS = { code: 'NIS', icon: '₪', name: 'Israeli New Shekel' };
   var STALE_MS = 24 * 60 * 60 * 1000;
@@ -107,6 +107,16 @@
       b.className = 'card';
       b.setAttribute('data-code', c.code);
       b.appendChild(badge(c));
+      var ct = document.createElement('span');
+      ct.className = 'country';
+      var fl = document.createElement('img');
+      fl.src = 'flags/' + c.flag + '.svg';
+      fl.alt = '';
+      fl.width = 24;
+      fl.height = 16;
+      ct.appendChild(fl);
+      ct.appendChild(document.createTextNode(c.country));
+      b.appendChild(ct);
       var r = document.createElement('span');
       r.className = 'rate';
       r.appendChild(document.createTextNode('1 ' + c.code + ' = '));
